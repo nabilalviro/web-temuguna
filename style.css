@@ -1,26 +1,64 @@
-/* Custom Properties (Variables) */
+/* Custom Properties (Variables) - Updated based on Figma Design System */
 :root {
-  --primary-color: #4caf50; /* Green */
-  --secondary-color: #2196f3; /* Blue */
-  --accent-color: #ffc107; /* Amber */
-  --text-dark: #333;
-  --text-light: #666;
-  --text-muted: #999;
-  --background-light: #f8f9fa; /* Lighter background */
-  --background-white: #fff;
-  --border-color: #e0e0e0;
-  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08); /* Softer shadow */
-  --shadow-medium: 0 6px 18px rgba(0, 0, 0, 0.12);
+  /* Main Palette from Figma */
+  --primary-figma: #47332c; /* Cokelat Tua */
+  --secondary-figma: #ffaa00; /* Kuning Oranye (aksen/highlight) */
+  --black-figma: #000000;
+  --dark-brown-figma: #594741; /* Cokelat Sedang */
+  --red-orange-figma: #ff3000; /* Merah Oranye (untuk error/warning) */
+  --light-blue-figma: #1877f2; /* Biru Terang */
+  --sky-blue-figma: #55acee; /* Biru Langit */
+  --orange-pastel-figma: #ff8753; /* Oranye Pastel */
+
+  /* Grayscale/Neutrals from Figma */
+  --text-dark-figma: #333333; /* Abu-abu Gelap (primary text) */
+  --text-medium-figma: #717070; /* Abu-abu Sedang (secondary text) */
+  --text-light-figma: #94928f; /* Abu-abu Pucat (placeholder/hint) */
+  --border-light-figma: #d9d9d9; /* Abu-abu Sangat Pucat (border/line) */
+  --bg-light-figma: #fff8eb; /* Krem Muda (light background) */
+  --bg-lighter-figma: #f6f4ee; /* Krem Sangat Muda (even lighter bg) */
+  --bg-white-figma: #ffffff; /* Putih */
+  --bg-gray-f5: #f5f5f5; /* Abu-abu Putih */
+
+  /* Mapped to previous general names for easier integration */
+  --primary-color: var(--primary-figma);
+  --secondary-color: var(
+    --light-blue-figma
+  ); /* Menggunakan biru terang untuk secondary actions */
+  --accent-color: var(--secondary-figma); /* Kuning oranye untuk aksen */
+
+  --text-dark: var(--text-dark-figma);
+  --text-light: var(--text-medium-figma);
+  --text-muted: var(--text-light-figma);
+  --background-light: var(
+    --bg-lighter-figma
+  ); /* Ganti dari f8f9fa ke krem muda */
+  --background-white: var(--bg-white-figma);
+  --border-color: var(--border-light-figma);
+  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sedikit lebih ringan */
+  --shadow-medium: 0 6px 18px rgba(0, 0, 0, 0.1);
+
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
 
-  /* Status Colors */
-  --status-sale: #ffc107;
-  --status-donation: #4caf50;
-  --condition-good: #66bb6a; /* Light Green */
-  --condition-very-good: #4caf50; /* Green */
-  --condition-needs-repair: #ff7043; /* Orange */
+  /* Status Colors - Adjusted based on Figma if applicable or keep semantic */
+  --status-sale: var(--secondary-figma); /* Kuning Oranye */
+  --status-donation: var(--primary-figma); /* Cokelat Tua */
+  --condition-good: #66bb6a; /* Green (tetap agar jelas) */
+  --condition-very-good: #4caf50; /* Green (tetap agar jelas) */
+  --condition-needs-repair: var(--orange-pastel-figma); /* Oranye Pastel */
+
+  /* Warna baru untuk logged in header */
+  --logged-in-nav-bg: #f5f5f5; /* Abu-abu terang untuk header logged in */
+  --logged-in-border: #e0e0e0; /* Border untuk search dan notif */
+  --logged-in-icon-color: #717070; /* Warna ikon seperti di figma */
+
+  /* NEW: Colors for before-login header elements based on Figma */
+  --header-before-login-bg: var(--bg-white-figma); /* Putih */
+  --header-before-login-border: var(--border-light-figma); /* D9D9D9 */
+  --header-before-login-text: var(--text-dark-figma); /* 333333 */
+  --header-search-bg: var(--bg-lighter-figma); /* F6F4EE */
 }
 
 /* Base Styles */
@@ -31,10 +69,10 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif; /* Font utama untuk body */
   line-height: 1.6;
   color: var(--text-dark);
-  background-color: var(--background-light);
+  background-color: var(--background-light); /* Menggunakan krem muda */
   scroll-behavior: smooth;
 }
 
@@ -48,8 +86,10 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Poppins", sans-serif;
-  color: var(--text-dark);
+  font-family: "Poppins", sans-serif; /* Headings menggunakan Poppins */
+  color: var(
+    --primary-color
+  ); /* Headings utama menjadi warna primer (cokelat tua) */
   margin-bottom: 1rem;
   line-height: 1.2;
 }
@@ -64,13 +104,16 @@ h2 {
   text-align: center;
   margin-bottom: 2.5rem;
   position: relative;
+  color: var(--text-dark); /* Kembali ke text-dark untuk h2 */
 }
 h2::after {
   content: "";
   display: block;
   width: 60px;
   height: 4px;
-  background-color: var(--primary-color);
+  background-color: var(
+    --secondary-figma
+  ); /* Garis bawah h2 menggunakan kuning oranye */
   margin: 15px auto 0;
   border-radius: 2px;
 }
@@ -83,19 +126,36 @@ h4 {
   font-weight: 600;
 }
 
+/* Menyesuaikan font untuk elemen spesifik yang mungkin perlu Inter atau Poppins */
+.know-about-us-text h4 {
+  font-family: "Inter", sans-serif; /* Subtitle pakai font Inter */
+  font-size: 0.9rem;
+  color: var(--secondary-figma); /* Kuning Oranye */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.main-header .logo {
+  font-family: "Poppins", sans-serif; /* Logo pakai Poppins */
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
 p {
   margin-bottom: 1rem;
-  color: var(--text-light);
+  color: var(--text-light); /* Menggunakan text-medium-figma */
 }
 
 a {
   text-decoration: none;
-  color: var(--secondary-color);
+  color: var(--light-blue-figma); /* Links menggunakan biru terang */
   transition: color 0.3s ease;
 }
 
 a:hover {
-  color: var(--primary-color);
+  color: var(--primary-figma); /* Hover link ke cokelat tua */
 }
 
 ul {
@@ -114,6 +174,7 @@ ul {
   text-decoration: none;
   cursor: pointer;
   border: 1px solid transparent;
+  font-family: "Inter", sans-serif; /* Button font Inter */
 }
 
 .btn-lg {
@@ -123,45 +184,45 @@ ul {
 }
 
 .btn-primary {
-  background-color: var(--primary-color);
+  background-color: var(--primary-figma); /* Cokelat Tua */
   color: white;
-  border-color: var(--primary-color);
+  border-color: var(--primary-figma);
 }
 .btn-primary:hover {
-  background-color: #43a047; /* Darker green */
+  background-color: var(--dark-brown-figma); /* Cokelat Sedang */
   color: white;
   transform: translateY(-2px);
 }
 
 .btn-primary-outline {
   background-color: transparent;
-  color: var(--primary-color);
-  border-color: var(--primary-color);
+  color: var(--primary-figma);
+  border-color: var(--primary-figma);
 }
 .btn-primary-outline:hover {
-  background-color: var(--primary-color);
+  background-color: var(--primary-figma);
   color: white;
   transform: translateY(-2px);
 }
 
 .btn-secondary {
-  background-color: var(--secondary-color);
+  background-color: var(--light-blue-figma); /* Biru Terang */
   color: white;
-  border-color: var(--secondary-color);
+  border-color: var(--light-blue-figma);
 }
 .btn-secondary:hover {
-  background-color: #1976d2; /* Darker blue */
+  background-color: var(--sky-blue-figma); /* Biru Langit */
   color: white;
   transform: translateY(-2px);
 }
 
 .btn-secondary-outline {
   background-color: transparent;
-  color: var(--secondary-color);
-  border-color: var(--secondary-color);
+  color: var(--light-blue-figma);
+  border-color: var(--light-blue-figma);
 }
 .btn-secondary-outline:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--light-blue-figma);
   color: white;
   transform: translateY(-2px);
 }
@@ -171,7 +232,12 @@ ul {
   padding: 80px 0;
 }
 .bg-light {
-  background-color: var(--background-white);
+  background-color: var(--bg-lighter-figma); /* Menggunakan krem sangat muda */
+}
+.bg-lighter-figma {
+  background-color: var(
+    --bg-lighter-figma
+  ); /* Tambahan untuk bg-lighter-figma */
 }
 
 /* Card General Styling */
@@ -186,20 +252,22 @@ ul {
   transform: translateY(-5px);
 }
 
-/* Header */
+/* Header - Before Login (REVISED) */
 .main-header {
-  background-color: var(--background-white);
-  padding: 15px 0;
-  box-shadow: var(--shadow-light);
+  background-color: var(--header-before-login-bg); /* Putih */
+  padding: 15px 0; /* Padding tetap */
+  border-bottom: 1px solid var(--header-before-login-border); /* Garis bawah tipis */
+  box-shadow: none; /* Hilangkan shadow sebelumnya */
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
 .main-header .container {
-  display: flex;
-  justify-content: space-between;
+  display: grid; /* Menggunakan Grid untuk kontrol yang lebih baik */
+  grid-template-columns: auto 1fr auto auto; /* Logo, Nav Kategori, Search, Login/Daftar */
   align-items: center;
+  gap: 20px; /* Jarak antar elemen grid */
 }
 
 .main-header .logo {
@@ -209,96 +277,513 @@ ul {
   color: var(--primary-color);
 }
 
-.main-nav ul {
+.main-header .nav-category {
+  display: flex;
+  justify-content: center; /* Posisikan di tengah jika ada ruang */
+}
+
+.main-header .nav-category ul {
   display: flex;
   margin: 0;
   padding: 0;
+  gap: 25px; /* Jarak antar item kategori */
 }
 
-.main-nav ul li {
-  margin-left: 35px;
-}
-
-.main-nav ul li a {
-  color: var(--text-dark);
+.main-header .nav-category ul li a {
+  color: var(--header-before-login-text); /* Warna teks abu-abu gelap */
   font-weight: 500;
   position: relative;
   padding: 5px 0;
   transition: color 0.3s ease;
+  font-family: "Inter", sans-serif;
 }
 
-.main-nav ul li a::after {
+.main-header .nav-category ul li a::after {
   content: "";
   position: absolute;
   width: 0;
   height: 3px;
-  background-color: var(--primary-color);
+  background-color: var(--primary-figma); /* Garis bawah navigasi */
   left: 0;
   bottom: -5px;
   transition: width 0.3s ease;
   border-radius: 2px;
 }
 
-.main-nav ul li a:hover::after,
-.main-nav ul li a.active::after {
+.main-header .nav-category ul li a:hover::after,
+.main-header .nav-category ul li a.active::after {
   width: 100%;
 }
 
-.main-nav .nav-actions {
+.main-header .search-bar-before {
+  position: relative;
+  width: 100%; /* Ambil sisa lebar */
+  max-width: 350px; /* Batasi lebar search bar */
+}
+
+.main-header .search-bar-before input {
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  border: 1px solid var(--border-light-figma);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  font-family: "Inter", sans-serif;
+  background-color: var(
+    --header-search-bg
+  ); /* Lighter background for search input */
+}
+.main-header .search-bar-before input::placeholder {
+  color: var(--text-muted); /* Placeholder color */
+}
+
+.main-header .search-bar-before .search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.main-header .auth-buttons {
   display: flex;
   gap: 10px;
 }
 
-/* Hero Section */
-.hero-section {
-  background: linear-gradient(rgba(76, 175, 80, 0.9), rgba(33, 150, 243, 0.7)),
-    url("../img/hero-bg.jpg") no-repeat center center/cover;
-  color: white;
-  padding: 100px 0;
-  text-align: left;
+/* NEW: Styles for Logged-in Header */
+.main-header.logged-in {
+  background-color: var(--logged-in-nav-bg); /* Abu-abu terang */
+  box-shadow: none; /* Hilangkan shadow jika sesuai Figma */
+  border-bottom: 1px solid var(--logged-in-border);
+  padding: 10px 0; /* Sesuaikan padding agar lebih compact */
 }
 
-.hero-section .container {
+.main-header.logged-in .container {
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* Logo, Search, Icons */
+  gap: 20px;
+  align-items: center;
+  /* Remove padding if container already has it */
+}
+.main-header.logged-in .logo {
+  margin-right: 20px; /* Jarak antara logo dan search bar */
+}
+
+.main-header.logged-in .nav-category {
+  /* Ini seharusnya tidak ada di header logged-in */
+  display: none;
+}
+
+.main-header.logged-in .search-bar {
+  /* NOTE: Nama kelas berbeda agar tidak konflik */
+  position: relative;
+  width: 100%; /* Ambil sisa lebar */
+  max-width: 600px; /* Batasi lebar search bar */
+}
+
+.main-header.logged-in .search-bar input {
+  width: 100%;
+  padding: 10px 40px 10px 15px; /* Sesuaikan padding untuk icon */
+  border: 1px solid var(--logged-in-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-white-figma); /* Background input putih */
+}
+.main-header.logged-in .search-bar input::placeholder {
+  color: var(--text-muted); /* Placeholder color */
+}
+
+.main-header.logged-in .search-bar .search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--logged-in-icon-color); /* Warna ikon abu-abu */
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.main-header.logged-in .user-actions {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  gap: 15px;
 }
 
-.hero-section .hero-content {
-  flex: 2;
-  max-width: 650px;
+.main-header.logged-in .user-actions .icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--logged-in-icon-color); /* Warna ikon abu-abu */
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
 }
 
-.hero-section h1 {
+.main-header.logged-in .user-actions .icon-btn:hover {
+  color: var(--primary-figma); /* Hover ke warna primary */
+}
+
+.main-header.logged-in .user-actions .user-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+.main-header.logged-in .user-actions .user-avatar:hover {
+  border-color: var(--primary-figma);
+}
+
+/* Hero Section (General - will be overridden by .hero-home or .hero-logged-in) */
+.hero-section {
+  background: none; /* Remove previous background from general hero */
+}
+
+/* --- Home Page Specific Styles (Before Login) --- */
+
+/* Hero Section for Home Page (Before Login) - REVISED */
+.hero-home {
+  background: linear-gradient(rgba(71, 51, 44, 0.7), rgba(71, 51, 44, 0.7)),
+    url("img/hero-children-bg.jpg") no-repeat center center/cover; /* Gradient cokelat tua lebih dominan */
   color: white;
-  font-size: 3.5rem;
-  margin-bottom: 25px;
+  padding: 100px 0; /* Padding vertikal */
+  text-align: center; /* Teks di tengah */
+  height: 715px; /* Tinggi sesuai Figma */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Tengah secara horizontal */
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md); /* Radius sudut */
+  margin: 20px auto; /* Margin atas bawah dan tengah */
+  max-width: 1398px; /* Lebar maksimal */
+  width: calc(100% - 40px); /* Kurangi 20px padding kiri kanan container */
 }
 
-.hero-section p {
-  color: rgba(255, 255, 255, 0.9);
+.hero-home .container {
+  display: flex;
+  flex-direction: column; /* Konten di tengah vertikal */
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+  max-width: 800px; /* Batasi lebar konten teks */
+  padding: 0; /* Hilangkan padding container default */
+}
+
+.hero-home .hero-content {
+  flex: none; /* Hilangkan flex grow */
+  max-width: 100%; /* Biarkan konten teks mengambil porsi lebih besar */
+}
+
+/* h1 hero sudah di Poppins secara global */
+.hero-home h1 {
+  font-size: 3.8rem;
+  margin-bottom: 25px;
+  line-height: 1.1;
+  color: white;
+  font-weight: 600; /* Font weight sesuai Figma */
+}
+
+.hero-home p {
   font-size: 1.15rem;
   line-height: 1.8;
   margin-bottom: 35px;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.hero-section .hero-buttons .btn {
-  margin-right: 15px;
-}
-
-.hero-section .hero-image {
-  flex: 1;
+.hero-home .hero-buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 15px; /* Jarak antar tombol */
+  justify-content: center; /* Tengah tombol */
+  flex-wrap: wrap; /* Izinkan wrapping pada layar kecil */
 }
 
-.hero-section .hero-image img {
-  max-width: 100%;
-  height: auto;
+/* Tombol hero menggunakan btn-lg */
+.hero-home .hero-buttons .btn {
+  padding: 15px 35px; /* Ukuran tombol lebih besar */
+  font-size: 1.1rem;
+  border-radius: var(--radius-md); /* Radius tombol */
+}
+/* Warna tombol sesuai Figma: Donasi Barang (Primary), Telusuri Barang (Secondary-Outline) */
+.hero-home .hero-buttons .btn-primary {
+  background-color: var(--primary-figma);
+  border-color: var(--primary-figma);
+  color: white;
+}
+.hero-home .hero-buttons .btn-primary:hover {
+  background-color: var(--dark-brown-figma);
+  border-color: var(--dark-brown-figma);
+}
+.hero-home .hero-buttons .btn-secondary-outline {
+  /* Mengganti "Play Video" dengan "Telusuri Barang" */
+  background-color: transparent;
+  color: var(--secondary-figma); /* Kuning Oranye */
+  border-color: var(--secondary-figma); /* Kuning Oranye */
+}
+.hero-home .hero-buttons .btn-secondary-outline:hover {
+  background-color: var(--secondary-figma);
+  color: var(--text-dark-figma); /* Teks hover ke abu-abu gelap */
+  border-color: var(--secondary-figma);
+}
+.hero-home .hero-buttons .btn-light-outline {
+  /* Untuk "Cari Jasa Perbaikan" */
+  background-color: transparent;
+  color: var(--bg-white-figma); /* Teks putih */
+  border-color: var(--bg-white-figma); /* Border putih */
+}
+.hero-home .hero-buttons .btn-light-outline:hover {
+  background-color: var(--bg-white-figma);
+  color: var(--primary-figma); /* Teks hover ke cokelat tua */
+}
+
+/* Hero image is now a background image for hero-home */
+.hero-home .hero-image-home {
+  display: none; /* Sembunyikan div gambar lama */
+}
+
+/* --- Home Page Specific Styles (After Login) --- */
+.hero-logged-in {
+  background: linear-gradient(rgba(71, 51, 44, 0.7), rgba(71, 51, 44, 0.7)),
+    url("img/hero-logged-in.png") no-repeat center center/cover; /* Gambar latar belakang untuk logged in */
+  color: white;
+  padding: 100px 0;
+  text-align: center;
+  height: 380px; /* Tinggi lebih rendah dari hero before login */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
   border-radius: var(--radius-md);
+  margin: 20px auto;
+  max-width: 1398px;
+  width: calc(100% - 40px);
+}
+
+.hero-logged-in .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Kurangi gap */
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0;
+}
+
+.hero-logged-in .hero-content {
+  flex: none;
+  max-width: 100%;
+}
+
+.hero-logged-in h1 {
+  font-size: 2.8rem; /* Ukuran h1 lebih kecil dari before login */
+  margin-bottom: 20px;
+  line-height: 1.2;
+  color: white;
+  font-weight: 600;
+}
+
+.hero-logged-in .hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-logged-in .hero-buttons .btn {
+  padding: 12px 25px; /* Ukuran tombol lebih kecil dari before login */
+  font-size: 1rem;
+  border-radius: var(--radius-sm);
+}
+.hero-logged-in .hero-buttons .btn-primary {
+  background-color: var(--primary-figma);
+  border-color: var(--primary-figma);
+  color: white;
+}
+.hero-logged-in .hero-buttons .btn-primary:hover {
+  background-color: var(--dark-brown-figma);
+  border-color: var(--dark-brown-figma);
+}
+.hero-logged-in .hero-buttons .btn-secondary-outline {
+  background-color: transparent;
+  color: var(--secondary-figma);
+  border-color: var(--secondary-figma);
+}
+.hero-logged-in .hero-buttons .btn-secondary-outline:hover {
+  background-color: var(--secondary-figma);
+  color: var(--text-dark-figma);
+  border-color: var(--secondary-figma);
+}
+
+/* Search Bar below Hero (Logged In) */
+.search-bar-below-hero {
+  position: relative;
+  margin-top: -40px; /* Tarik ke atas menutupi hero sedikit */
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px; /* Lebar search bar di bawah hero */
+  z-index: 500; /* Pastikan di atas elemen lain */
+  box-shadow: var(--shadow-medium); /* Shadow untuk membedakan */
+  border-radius: var(--radius-md);
+  background-color: var(--bg-white-figma); /* Background putih */
+}
+.search-bar-below-hero .input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-light-figma);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--bg-white-figma);
+}
+
+.search-bar-below-hero input {
+  flex-grow: 1;
+  padding: 15px 20px;
+  border: none;
+  font-size: 1rem;
+  color: var(--text-dark);
+  font-family: "Inter", sans-serif;
+  background-color: transparent;
+}
+.search-bar-below-hero input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-bar-below-hero .search-btn {
+  background-color: var(--primary-figma);
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  font-family: "Inter", sans-serif;
+}
+.search-bar-below-hero .search-btn:hover {
+  background-color: var(--dark-brown-figma);
+}
+.search-bar-below-hero .search-icon-btn {
+  background: none;
+  border: none;
+  padding: 0 15px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+}
+.search-bar-below-hero .search-icon-btn:hover {
+  color: var(--primary-figma);
+}
+
+/* Kategori Popular Section */
+.popular-categories {
+  margin-top: 60px; /* Jarak dari search bar */
+}
+.popular-categories .category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+.popular-categories .category-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-dark);
+  transition: transform 0.3s ease;
+}
+.popular-categories .category-item:hover {
+  transform: translateY(-5px);
+}
+.popular-categories .category-item .icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--bg-lighter-figma); /* Background icon category */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.popular-categories .category-item .icon-circle i {
+  font-size: 2.2rem;
+  color: var(--light-blue-figma); /* Warna ikon kategori */
+}
+.popular-categories .category-item p {
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin: 0;
+  color: var(--text-dark);
+  font-family: "Inter", sans-serif;
+}
+
+/* Know About Us Section */
+.know-about-us-grid {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.know-about-us-text {
+  flex: 1;
+  min-width: 300px; /* Minimum width before wrapping */
+}
+
+/* Already set to Inter for h4 */
+/* .know-about-us-text h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: var(--secondary-figma);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+} */
+
+/* h2 di sini juga otomatis Poppins */
+.know-about-us-text h2 {
+  text-align: left; /* Override global h2 text-align: center; */
+  font-size: 2.8rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+/* Remove pseudo-element for this specific h2 */
+.know-about-us-text h2::after {
+  display: none;
+}
+
+.know-about-us-text p {
+  margin-bottom: 15px;
+  line-height: 1.7;
+  color: var(--text-dark); /* Menggunakan warna teks gelap */
+}
+
+.know-about-us-image {
+  flex: 1;
+  min-width: 300px; /* Minimum width before wrapping */
+  max-width: 50%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
   box-shadow: var(--shadow-medium);
+}
+
+.know-about-us-image img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Product Grid (for Latest Recommendations & Similar Products) */
@@ -341,6 +826,7 @@ ul {
   flex-grow: 1;
 }
 
+/* h3 di card juga otomatis Poppins */
 .product-card-content h3 {
   font-size: 1.3rem;
   margin-bottom: 8px;
@@ -351,12 +837,14 @@ ul {
   font-size: 0.9rem;
   color: var(--text-muted);
   margin-bottom: 5px;
+  font-family: "Inter", sans-serif; /* Kategori pakai Inter */
 }
 
 .product-card-content .condition {
   font-size: 0.95rem;
   font-weight: 500;
   margin-bottom: 15px;
+  font-family: "Inter", sans-serif; /* Kondisi pakai Inter */
 }
 .product-card-content .condition.good {
   color: var(--condition-good);
@@ -365,7 +853,7 @@ ul {
   color: var(--condition-very-good);
 }
 .product-card-content .condition.needs-repair {
-  color: var(--condition-needs-repair);
+  color: var(--orange-pastel-figma);
 }
 
 .product-footer {
@@ -379,6 +867,7 @@ ul {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--primary-color);
+  font-family: "Poppins", sans-serif; /* Harga pakai Poppins */
 }
 
 .status-badge {
@@ -388,11 +877,12 @@ ul {
   font-weight: 600;
   text-transform: uppercase;
   color: white;
+  font-family: "Inter", sans-serif; /* Badge status pakai Inter */
 }
 .status-badge.sale {
   background-color: var(--status-sale);
   color: var(--text-dark);
-}
+} /* Warna teks disesuaikan */
 .status-badge.donation {
   background-color: var(--status-donation);
 }
@@ -423,13 +913,14 @@ ul {
 
 .feature-card .icon-lg {
   font-size: 3rem;
-  color: var(--secondary-color);
+  color: var(--secondary-color); /* Ikon menggunakan warna secondary */
   margin-bottom: 20px;
 }
 
+/* h3 di card fitur otomatis Poppins */
 .feature-card h3 {
   font-size: 1.5rem;
-  color: var(--primary-color);
+  color: var(--primary-color); /* H3 di card fitur pakai warna primary */
   margin-bottom: 10px;
 }
 
@@ -438,6 +929,11 @@ ul {
 }
 
 /* Testimonials */
+.testimonials h2::after {
+  /* Khusus untuk Testimonials agar garisnya juga kuning oranye */
+  background-color: var(--secondary-figma);
+}
+
 .testimonial-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -461,7 +957,7 @@ ul {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 20px;
-  border: 3px solid var(--primary-color);
+  border: 3px solid var(--primary-figma); /* Border avatar pakai warna primary */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -471,11 +967,13 @@ ul {
   color: var(--text-dark);
   margin-bottom: 15px;
   line-height: 1.7;
+  font-family: "Inter", sans-serif; /* Quote testimonial pakai Inter */
 }
 
 .testimonial-author {
   font-weight: 600;
-  color: var(--secondary-color);
+  color: var(--light-blue-figma); /* Penulis testimonial pakai biru terang */
+  font-family: "Poppins", sans-serif; /* Penulis testimonial pakai Poppins */
 }
 
 /* Network Map */
@@ -500,18 +998,20 @@ ul {
   min-width: 300px;
 }
 
+/* h3 peta otomatis Poppins */
 .network-map .map-text h3 {
   font-size: 2rem;
-  color: var(--primary-color);
+  color: var(--primary-color); /* H3 peta pakai warna primary */
   margin-bottom: 15px;
 }
 
 /* Footer */
 .main-footer {
-  background-color: var(--text-dark); /* Dark grey, close to black from Figma */
+  background-color: var(--text-dark-figma); /* Abu-abu Gelap dari Figma */
   color: white;
   padding: 50px 0 25px;
   font-size: 0.9rem;
+  font-family: "Inter", sans-serif; /* Footer text pakai Inter */
 }
 
 .main-footer .footer-grid {
@@ -521,9 +1021,10 @@ ul {
   margin-bottom: 40px;
 }
 
+/* h3, h4 di footer otomatis Poppins */
 .main-footer h3,
 .main-footer h4 {
-  color: var(--primary-color); /* Green for headings */
+  color: var(--secondary-figma); /* Kuning Oranye untuk judul footer */
   margin-bottom: 20px;
 }
 
@@ -561,7 +1062,7 @@ ul {
 }
 
 .main-footer .social-icons a:hover {
-  color: var(--secondary-color);
+  color: var(--light-blue-figma); /* Hover footer social ke biru terang */
 }
 
 .main-footer .footer-bottom {
@@ -574,12 +1075,14 @@ ul {
 
 /* Sub-Hero for About, Services, Contact */
 .section-hero-sub {
-  background: linear-gradient(rgba(33, 150, 243, 0.8), rgba(76, 175, 80, 0.7));
+  /* Gradient disesuaikan dengan warna Figma */
+  background: linear-gradient(rgba(24, 119, 242, 0.8), rgba(71, 51, 44, 0.7));
   color: white;
   padding: 80px 0;
   text-align: center;
   margin-bottom: 40px;
 }
+/* h1 di sub-hero otomatis Poppins */
 .section-hero-sub h1 {
   color: white;
   font-size: 3rem;
@@ -605,10 +1108,11 @@ ul {
   background-color: var(--background-white);
   padding: 20px;
   margin-bottom: 15px;
-  border-left: 5px solid var(--accent-color);
+  border-left: 5px solid var(--secondary-figma); /* Garis masalah pakai kuning oranye */
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-light);
   color: var(--text-dark);
+  font-family: "Inter", sans-serif; /* List problem pakai Inter */
 }
 .problem-list li strong {
   color: var(--primary-color);
@@ -620,8 +1124,9 @@ ul {
   gap: 30px;
   margin-top: 30px;
 }
+/* h3 di card prioritas otomatis Poppins */
 .priority-idea-grid .card h3 {
-  color: var(--secondary-color);
+  color: var(--light-blue-figma); /* H3 prioritas pakai biru terang */
 }
 
 /* Services Page Specifics (simplified for now) */
@@ -638,6 +1143,7 @@ ul {
   box-shadow: var(--shadow-light);
   text-align: center;
 }
+/* h3 di service card otomatis Poppins */
 .service-card h3 {
   color: var(--primary-color);
   margin-bottom: 15px;
@@ -659,6 +1165,7 @@ ul {
   margin-bottom: 8px;
   font-weight: 500;
   color: var(--text-dark);
+  font-family: "Inter", sans-serif; /* Label form pakai Inter */
 }
 .form-group input,
 .form-group textarea,
@@ -667,7 +1174,7 @@ ul {
   padding: 12px;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif; /* Input, textarea, select pakai Inter */
   font-size: 1rem;
   color: var(--text-dark);
   transition: border-color 0.3s ease;
@@ -676,8 +1183,8 @@ ul {
 .form-group textarea:focus,
 .form-group select:focus {
   outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+  border-color: var(--primary-figma); /* Border fokus pakai cokelat tua */
+  box-shadow: 0 0 0 3px rgba(71, 51, 44, 0.1); /* Shadow fokus */
 }
 .form-group textarea {
   resize: vertical;
@@ -697,23 +1204,25 @@ ul {
 }
 
 .contact-info-card {
-  background-color: var(--primary-color);
+  background-color: var(--primary-figma); /* Kartu kontak pakai cokelat tua */
   color: white;
   padding: 30px;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-medium);
   text-align: center;
 }
+/* h3 di kartu info otomatis Poppins */
 .contact-info-card h3 {
-  color: white; /* Headings white in info cards */
+  color: var(--secondary-figma); /* H3 di kartu info pakai kuning oranye */
   margin-bottom: 10px;
 }
 .contact-info-card p {
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 5px;
+  font-family: "Inter", sans-serif; /* Teks di info kontak pakai Inter */
 }
 .contact-info-card a {
-  color: white;
+  color: var(--secondary-figma); /* Link di kartu info pakai kuning oranye */
   text-decoration: underline;
 }
 .contact-info-card .social-icon-link {
@@ -760,12 +1269,13 @@ ul {
   font-size: 0.9rem;
   color: var(--text-muted);
   margin-bottom: 20px;
+  font-family: "Inter", sans-serif; /* Breadcrumb pakai Inter */
 }
 .product-breadcrumb a {
   color: var(--text-muted);
 }
 .product-breadcrumb a:hover {
-  color: var(--primary-color);
+  color: var(--primary-figma); /* Breadcrumb hover pakai cokelat tua */
   text-decoration: none;
 }
 
@@ -796,20 +1306,24 @@ ul {
 
 .product-gallery .thumbnail-images img.active,
 .product-gallery .thumbnail-images img:hover {
-  border-color: var(--primary-color);
+  border-color: var(
+    --primary-figma
+  ); /* Thumbnail active/hover pakai cokelat tua */
   transform: scale(1.05);
 }
 
+/* h1 di product info otomatis Poppins */
 .product-info h1 {
   font-size: 2.2rem;
   margin-bottom: 10px;
-  color: var(--text-dark);
+  color: var(--primary-color); /* Judul produk detail pakai primary color */
 }
 
 .product-info .category,
 .product-info .condition {
   font-size: 0.95rem;
   margin-bottom: 5px;
+  font-family: "Inter", sans-serif; /* Kategori dan kondisi di detail produk pakai Inter */
 }
 .product-info .condition {
   font-weight: 500;
@@ -826,6 +1340,7 @@ ul {
   font-size: 2.2rem;
   font-weight: 700;
   color: var(--primary-color);
+  font-family: "Poppins", sans-serif; /* Harga besar di detail produk pakai Poppins */
 }
 
 .product-info .product-meta {
@@ -837,11 +1352,13 @@ ul {
 .product-info .product-meta p {
   margin-bottom: 8px;
   font-size: 0.95rem;
+  font-family: "Inter", sans-serif; /* Meta info di detail produk pakai Inter */
 }
 .product-info .product-meta p strong {
   color: var(--text-dark);
 }
 
+/* h3 di product info otomatis Poppins */
 .product-info h3 {
   font-size: 1.6rem;
   margin-top: 30px;
@@ -876,12 +1393,13 @@ ul {
 }
 .review-item p {
   margin-bottom: 5px;
+  font-family: "Inter", sans-serif; /* Review text pakai Inter */
 }
 .review-item strong {
   color: var(--text-dark);
 }
 .review-item .rating {
-  color: var(--accent-color); /* For stars */
+  color: var(--secondary-figma); /* Untuk bintang rating pakai kuning oranye */
 }
 .review-item .review-date {
   font-size: 0.85rem;
@@ -891,31 +1409,104 @@ ul {
 /* Responsive Design */
 @media (max-width: 1024px) {
   .main-header .container {
-    flex-direction: column;
-    text-align: center;
+    grid-template-columns: auto 1fr auto; /* Logo, Search Bar, Auth Buttons (Nav Kategori di bawah) */
+    row-gap: 15px;
   }
-  .main-nav ul {
+  .main-header .nav-category {
+    grid-column: 1 / 4; /* Ambil semua kolom */
+    justify-content: center;
+  }
+  .main-header .nav-category ul {
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 15px;
+    gap: 15px;
   }
-  .main-nav ul li {
-    margin: 0 15px 10px;
+  .main-header .search-bar-before {
+    grid-column: 2 / 3; /* Tengah search bar di tengah */
+    justify-self: center; /* Pastikan di tengah */
   }
-  .main-nav .nav-actions {
-    margin-top: 15px;
-    justify-content: center;
+  .main-header .auth-buttons {
+    justify-self: end; /* Dorong tombol ke kanan */
   }
 
-  .hero-section .container {
+  /* Logged-in Header Responsive */
+  .main-header.logged-in .container {
+    grid-template-columns: auto 1fr; /* Logo, Search + Icons (stacked) */
+    row-gap: 15px;
+  }
+  .main-header.logged-in .search-bar {
+    grid-column: 1 / 3; /* Search bar ambil 2 kolom */
+  }
+  .main-header.logged-in .user-actions {
+    justify-self: end; /* Push icons to the right */
+    gap: 10px;
+  }
+
+  .hero-home {
+    height: auto; /* Allow height to adjust */
+    padding: 80px 0;
+    margin: 20px; /* Adjust margin for smaller screens */
+    max-width: none; /* No max-width restriction */
+    width: auto;
+  }
+  /* h1 hero otomatis Poppins */
+  .hero-home .container {
+    text-align: center;
+    gap: 30px;
+  }
+  .hero-home .hero-content {
+    max-width: 100%;
+  }
+  .hero-home h1 {
+    font-size: 3rem;
+  }
+  .hero-home p {
+    font-size: 1rem;
+  }
+  .hero-home .hero-buttons {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  .hero-home .hero-buttons .btn {
+    width: 80%; /* Make buttons wider */
+    max-width: 300px;
+  }
+
+  .hero-logged-in {
+    height: auto;
+    padding: 80px 0;
+    margin: 20px;
+    max-width: none;
+    width: auto;
+  }
+  .hero-logged-in h1 {
+    font-size: 2.2rem;
+  }
+  .hero-logged-in .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .hero-logged-in .hero-buttons .btn {
+    width: 80%;
+    max-width: 300px;
+  }
+  .search-bar-below-hero {
+    max-width: calc(100% - 40px);
+    margin-top: -30px; /* Adjust pull-up */
+  }
+
+  .know-about-us-grid {
     flex-direction: column;
     text-align: center;
   }
-  .hero-section h1 {
-    font-size: 2.8rem;
+  /* h2 know about us otomatis Poppins */
+  .know-about-us-text h2 {
+    text-align: center;
   }
-  .hero-section .hero-image {
-    margin-top: 40px;
+  .know-about-us-image {
+    max-width: 80%;
   }
 
   .product-detail-layout {
@@ -924,6 +1515,9 @@ ul {
   }
   .product-gallery .main-image img {
     height: 350px;
+  }
+  .product-gallery .thumbnail-images {
+    flex-wrap: wrap; /* Allow thumbnails to wrap */
   }
   .product-info .product-actions .btn {
     flex: auto; /* Buttons will stack */
@@ -952,19 +1546,82 @@ ul {
     padding: 60px 0;
   }
 
-  .hero-section {
-    padding: 80px 0;
+  .main-header .container {
+    grid-template-columns: 1fr; /* Stack all elements */
+    gap: 15px;
   }
-  .hero-section h1 {
+  .main-header .logo {
+    text-align: center;
+  }
+  .main-header .nav-category {
+    grid-column: 1 / 2; /* Reset to single column */
+  }
+  .main-header .nav-category ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  .main-header .search-bar-before {
+    grid-column: 1 / 2; /* Reset to single column */
+    max-width: 100%; /* Take full width */
+  }
+  .main-header .auth-buttons {
+    justify-content: center; /* Center buttons */
+  }
+
+  .main-header.logged-in .container {
+    grid-template-columns: 1fr; /* Stack all elements */
+    gap: 15px;
+  }
+  .main-header.logged-in .logo {
+    text-align: center;
+  }
+  .main-header.logged-in .search-bar {
+    grid-column: 1 / 2; /* Reset to single column */
+    max-width: 100%;
+  }
+  .main-header.logged-in .user-actions {
+    justify-content: center; /* Center icons */
+  }
+
+  .hero-home {
+    padding: 60px 0;
+  }
+  .hero-home h1 {
     font-size: 2.5rem;
   }
-  .hero-section p {
+  .hero-home p {
     font-size: 1rem;
   }
-  .hero-section .hero-buttons .btn {
-    margin: 10px 0; /* Stack buttons */
-    width: 100%;
-    max-width: 300px;
+  .hero-home .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .hero-home .hero-buttons .btn {
+    width: 90%;
+  }
+
+  .hero-logged-in {
+    padding: 60px 0;
+  }
+  .hero-logged-in h1 {
+    font-size: 2rem;
+  }
+  .hero-logged-in .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .hero-logged-in .hero-buttons .btn {
+    width: 90%;
+  }
+  .search-bar-below-hero {
+    max-width: calc(100% - 40px);
+    margin-top: -30px;
+  }
+
+  .know-about-us-text h2 {
+    font-size: 2.2rem;
   }
 
   .product-grid,
@@ -975,6 +1632,10 @@ ul {
   .priority-idea-grid {
     grid-template-columns: 1fr; /* Single column */
     gap: 25px;
+  }
+
+  .popular-categories .category-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
 
   .network-map .map-content {
@@ -1017,8 +1678,31 @@ ul {
     font-size: 1rem;
   }
 
-  .hero-section h1 {
+  .hero-home h1 {
     font-size: 2rem;
+  }
+  .hero-home p {
+    font-size: 0.95rem;
+  }
+  .hero-home .hero-buttons .btn {
+    width: 100%;
+  }
+
+  .hero-logged-in h1 {
+    font-size: 1.8rem;
+  }
+  .hero-logged-in .hero-buttons .btn {
+    width: 100%;
+  }
+  .search-bar-below-hero input {
+    padding: 12px 15px;
+  }
+  .search-bar-below-hero .search-btn {
+    padding: 12px 20px;
+  }
+
+  .know-about-us-text h2 {
+    font-size: 1.8rem;
   }
   .product-card-content h3 {
     font-size: 1.1rem;

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TemuGuna - Berbagi Kebaikan, Perpanjang Manfaat</title>
+    <title>TemuGuna - Berbagi Kebaikan, Perpanjang Manfaat (Logged In)</title>
     <link rel="stylesheet" href="css/style.css" />
     <link
       rel="stylesheet"
@@ -15,46 +15,94 @@
     />
   </head>
   <body>
-    <header class="main-header">
+    <header class="main-header logged-in">
       <div class="container">
-        <a href="index.html" class="logo">TemuGuna</a>
-        <nav class="nav-category">
-          <ul>
-            <li><a href="#" class="active">Kategori</a></li>
-            <li><a href="#">Donasi Barang</a></li>
-            <li><a href="#">Barang Dijual</a></li>
-            <li><a href="#">Jasa Perbaikan</a></li>
-            <li><a href="#">Tentang Kami</a></li>
-          </ul>
-        </nav>
-        <div class="search-bar-before">
+        <a href="index-logged-in.html" class="logo">TemuGuna</a>
+        <div class="search-bar">
           <input
             type="text"
             placeholder="Cari barang, jasa perbaikan, dan lainnya..."
           />
           <i class="fas fa-search search-icon"></i>
         </div>
-        <div class="auth-buttons">
-          <a href="#" class="btn btn-primary-outline">Daftar</a>
-          <a href="index-logged-in.html" class="btn btn-primary">Masuk</a>
+        <div class="user-actions">
+          <button class="icon-btn" aria-label="Notifikasi">
+            <i class="fas fa-bell"></i>
+          </button>
+          <button class="icon-btn" aria-label="Keranjang Belanja">
+            <i class="fas fa-shopping-cart"></i>
+          </button>
+          <img
+            src="img/user-avatar.jpg"
+            alt="Avatar Pengguna"
+            class="user-avatar"
+          />
         </div>
       </div>
     </header>
 
     <main>
-      <section class="hero-section hero-home">
+      <section class="hero-section hero-logged-in">
         <div class="container">
           <div class="hero-content">
             <h1>TemuGuna: Berbagi Kebaikan, Perpanjang Manfaat.</h1>
             <div class="hero-buttons">
-              <a href="#" class="btn btn-primary btn-lg">Donasi Barang</a>
-              <a href="#" class="btn btn-secondary-outline btn-lg"
-                >Telusuri Barang</a
-              >
-              <a href="#" class="btn btn-light-outline btn-lg"
-                >Cari Jasa Perbaikan</a
-              >
+              <a href="#" class="btn btn-primary">Donasi Barang</a>
+              <a href="#" class="btn btn-secondary-outline">Telusuri Barang</a>
+              <a href="#" class="btn btn-light-outline">Cari Jasa Perbaikan</a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="search-bar-below-hero">
+        <div class="container">
+          <div class="input-group">
+            <input
+              type="text"
+              placeholder="Cari barang atau jasa perbaikan..."
+            />
+            <button class="search-btn">Cari</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-padded popular-categories">
+        <div class="container">
+          <h2>Kategori Populer</h2>
+          <div class="category-grid">
+            <a href="#" class="category-item">
+              <div class="icon-circle"><i class="fas fa-wheelchair"></i></div>
+              <p>Mobilitas</p>
+            </a>
+            <a href="#" class="category-item">
+              <div class="icon-circle"><i class="fas fa-book-open"></i></div>
+              <p>Edukasi</p>
+            </a>
+            <a href="#" class="category-item">
+              <div class="icon-circle"><i class="fas fa-headphones"></i></div>
+              <p>Alat Dengar</p>
+            </a>
+            <a href="#" class="category-item">
+              <div class="icon-circle"><i class="fas fa-heartbeat"></i></div>
+              <p>Kesehatan</p>
+            </a>
+            <a href="#" class="category-item">
+              <div class="icon-circle"><i class="fas fa-child"></i></div>
+              <p>Mainan</p>
+            </a>
+            <a href="#" class="category-item">
+              <div class="icon-circle"><i class="fas fa-tshirt"></i></div>
+              <p>Pakaian</p>
+            </a>
+            <a href="#" class="category-item">
+              <div class="icon-circle"><i class="fas fa-tools"></i></div>
+              <p>Perbaikan</p>
+            </a>
+            <a href="#" class="category-item">
+              <div class="icon-circle"><i class="fas fa-ellipsis-h"></i></div>
+              <p>Lainnya</p>
+            </a>
           </div>
         </div>
       </section>
@@ -271,7 +319,7 @@
         <div class="footer-section">
           <h3>Navigasi</h3>
           <ul>
-            <li><a href="index.html">Beranda</a></li>
+            <li><a href="index-logged-in.html">Beranda</a></li>
             <li><a href="about.html">Tentang Kami</a></li>
             <li><a href="services.html">Layanan</a></li>
             <li><a href="contact.html">Kontak Kami</a></li>
